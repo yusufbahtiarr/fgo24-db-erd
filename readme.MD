@@ -12,7 +12,7 @@ erDiagram
     }
     buku ||--o{ kategori : memiliki
     buku ||--o{ petugas : dikelola
-    buku }o--|| transaksi : dipinjam
+    buku }o--|| transaksi : dicatat
     buku {
         string id_buku PK
         string judul
@@ -44,11 +44,11 @@ erDiagram
     transaksi ||--o{ peminjam : dilakukan
     transaksi {
         string id_transaksi PK
-        string id_buku FK
-        string id_peminjam FK
         string dikembalikan
         date tgl_peminjaman
         date deadline
+        string id_peminjam FK
+        string id_buku FK
     }
 
 ```
