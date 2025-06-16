@@ -1,18 +1,19 @@
 # ERD Perpustakaan
 
+Minitask Database - ERD. This erd is related to library borrowing with the entities of book, category, bookshelf, borrower, officer and transaction.
+
 ```mermaid
 erDiagram
     direction LR
-    RAK_BUKU ||--o{ BUKU  : menyimpan
-    RAK_BUKU {
-        string id_rakbuku PK
+    rak_buku ||--o{ buku  : menyimpan
+    rak_buku {
+        string id_rak_buku PK
         int kapasitas
     }
-    BUKU }o--|| KATEGORI : memiliki
-    BUKU }o--|| PETUGAS : dikelola
-    BUKU }o--o{ PEMINJAM : dipinjam
-    BUKU }o--|| TRANSAKSI : dipinjam
-    BUKU {
+    buku ||--o{ kategori : memiliki
+    buku ||--o{ petugas : dikelola
+    buku }o--|| transaksi : dipinjam
+    buku {
         string id_buku PK
         string judul
         string isbn
@@ -25,23 +26,23 @@ erDiagram
         string id_kategori FK
         string id_petugas FK
     }
-    KATEGORI {
+    kategori {
         string id_kategori PK
         string nama
     }
 
-    PETUGAS {
+    petugas {
         string id_petugas PK
         string nama
     }
-    PEMINJAM {
+    peminjam {
         string id_peminjam PK
         string nama
         string alamat
         string no_hp
     }
-    TRANSAKSI ||--o{ PEMINJAM : dilakukan
-    TRANSAKSI {
+    transaksi ||--o{ peminjam : dilakukan
+    transaksi {
         string id_transaksi PK
         string id_buku FK
         string id_peminjam FK
